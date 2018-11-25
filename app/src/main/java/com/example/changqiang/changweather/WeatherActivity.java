@@ -77,18 +77,17 @@ public class WeatherActivity extends AppCompatActivity
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
-        String weatherId;
-        Intent intent = getIntent();
-        if(intent != null)
+        String weatherString = prefs.getString("weather", null);
+        if(weatherString != null)
         {
-            weatherId = intent.getStringExtra("weather_id");
+            weather = Utility.handleWeatherResponse(weatherString);
+            updateViews();
         }
         else
         {
-            weatherId = "";
+            String weatherId = getIntent().getStringExtra("weather_id");
+            getWeatherFromServer(weatherId);
         }
-
-        getWeatherFromServer(weatherId);
 
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener()
         {
@@ -183,6 +182,10 @@ public class WeatherActivity extends AppCompatActivity
             public void onResponse(Call call, Response response) throws IOException
             {
                 String responseText = response.body().string();
+                SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(WeatherActivity.this).edit();
+                editor.putString("weather", responseText);
+                editor.apply();
+
                 weather = Utility.handleWeatherResponse(responseText);
                 runOnUiThread(new Runnable()
                 {
@@ -203,11 +206,16 @@ public class WeatherActivity extends AppCompatActivity
 
     private void updateViews()
     {
-        updateTitle();
-        updateNow();
-        updateAQI();
-        updateForecast();
-        updateSuggestion();
+        if(weather != null && weather.status.equals("ok"))
+        {
+            updateTitle();
+            updateNow();
+            updateAQI();
+            updateForecast();
+            updateSuggestion();
+            Intent intent = new Intent(this, AutoUpdateService.class);
+            startService(intent);
+        }
     }
 
     private void updateSuggestion()

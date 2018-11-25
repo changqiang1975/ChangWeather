@@ -43,7 +43,7 @@
     <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/weather_fragment"
+        android:id="@+id/weather_fragments"
         android:name="com.example.changqiang.changweather.WeatherFragment"
         android:layout_gravity="start"/>
 

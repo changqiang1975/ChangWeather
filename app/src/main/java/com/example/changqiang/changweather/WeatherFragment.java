@@ -98,7 +98,7 @@ public class WeatherFragment extends Fragment
                             startActivity(intent);
                             getActivity().finish();
                         }
-                        else
+                        else if(getActivity() instanceof WeatherActivity)
                         {
                             WeatherActivity activity = (WeatherActivity)getActivity();
                             activity.drawerLayout.closeDrawers();
