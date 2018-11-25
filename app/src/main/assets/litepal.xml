@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<litepal>
+    <dbname value="city.db"/>
+    <version value="1"/>
+    <list>
+        <mapping class="com.example.changqiang.changweather.db.Province"/>
+        <mapping class="com.example.changqiang.changweather.db.City"/>
+        <mapping class="com.example.changqiang.changweather.db.County"/>
+    </list>
+</litepal>

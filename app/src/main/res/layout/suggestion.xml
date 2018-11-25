@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="15dp"
+    android:padding="15dp"
+    android:background="#8000">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="方案建议"
+        android:textSize="20sp"
+        android:textColor="#FFF"
+        android:layout_gravity="left" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/suggestion_comfort"
+        android:textSize="16sp"
+        android:textColor="#FFF"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/suggestion_carwash"
+        android:textSize="16sp"
+        android:textColor="#FFF"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/suggestion_sport"
+        android:textSize="16sp"
+        android:textColor="#FFF"
+        android:layout_marginTop="10dp"/>
+</LinearLayout>
